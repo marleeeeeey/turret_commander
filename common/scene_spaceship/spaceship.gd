@@ -95,15 +95,20 @@ func _control_via_keyboard_and_gamepad_event():
 		look_at(global_position + direction)
 
 	if Input.is_action_just_pressed("shoot"):
-		var bullet = bullet_scene.instantiate()
-		owner.add_child(bullet)
-		bullet.transform = $BulletSpawnPoint.global_transform
+		_shoot()
 
 	if Input.is_action_just_pressed("spawn_turret"):
 		var turret = turret_scene.instantiate()
 		owner.add_child(turret)
+		turret.owner = owner
 		var position_behind = (
 			global_position - last_global_direction * distance_to_spawn_turret_behind_player
 		)
 		turret.global_position = position_behind
 		turret.look_at(global_position + last_global_direction)
+
+
+func _shoot():
+	var bullet = bullet_scene.instantiate()
+	owner.add_child(bullet)
+	bullet.transform = $BulletSpawnPoint.global_transform
