@@ -76,6 +76,7 @@ The structure is as follows:
 - Add keyboard and gamepad controls for player : 2024-05-15
 - Spaceship may shoot : 2024-05-15
 - Spaceship creates turrets : 2024-05-16
+- Turrets attacks enemies : 2024-05-16
 
 ## Assets
 
