@@ -2,13 +2,48 @@ extends CharacterBody2D
 
 @export var speed = 600
 @export var show_debug_info = false
-
-# TODO0: Here is an desing issue:
-# Camera2D should not be a child of the character.
-# User should be able to move the camera around.
+@export var control_via_mouse_enabled = false
+@export var control_via_keys_enabled = true
 
 
 func _input(event):
+	if control_via_mouse_enabled:
+		_control_via_mouse_event(event)
+
+
+func _process(delta: float) -> void:
+	if control_via_keys_enabled:
+		var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		velocity = direction * speed
+
+		# Rotate the character.
+		if direction.length() > 0:
+			look_at(global_position + direction)
+
+	# Move the character.
+	move_and_slide()
+
+
+func _physics_process(delta: float) -> void:
+	if $NavigationAgent2D.is_navigation_finished():
+		return
+
+	# Calculate the next path position.
+	var next_path_position = $NavigationAgent2D.get_next_path_position()
+
+	# Rotate towards the next path position. X axis is the forward direction.
+	look_at(next_path_position)
+
+	# Calc velocity towards the next path position.
+	var diff = next_path_position - global_position
+	var direction = diff.normalized()
+	velocity = direction * speed
+
+	# Move the character.
+	move_and_slide()
+
+
+func _control_via_mouse_event(event):
 	# Mouse in viewport (screen) coordinates.
 	var event_mouse_button = event as InputEventMouseButton
 	if not event_mouse_button:
@@ -49,22 +84,3 @@ func _input(event):
 		aim.position = closest_point_on_nav_map
 		aim.debug_text = "world"
 		get_viewport().add_child(aim)
-
-
-func _physics_process(delta: float) -> void:
-	if $NavigationAgent2D.is_navigation_finished():
-		return
-
-	# Calculate the next path position.
-	var next_path_position = $NavigationAgent2D.get_next_path_position()
-
-	# Rotate towards the next path position. X axis is the forward direction.
-	look_at(next_path_position)
-
-	# Calc velocity towards the next path position.
-	var diff = next_path_position - global_position
-	var direction = diff.normalized()
-	velocity = direction * speed
-
-	# Move the character.
-	move_and_slide()

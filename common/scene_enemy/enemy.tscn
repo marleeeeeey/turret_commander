@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://common/scene_enemy/enemy.gd" id="1_ucxcd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xyxm"]
-radius = 33.0151
+radius = 25.0
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_ucxcd")
