@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var show_debug_info = false
 @export var control_via_mouse_enabled = false
 @export var control_via_keys_enabled = true
+@export var bullet_scene: PackedScene
 
 
 func _input(event):
@@ -13,12 +14,7 @@ func _input(event):
 
 func _process(delta: float) -> void:
 	if control_via_keys_enabled:
-		var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		velocity = direction * speed
-
-		# Rotate the character.
-		if direction.length() > 0:
-			look_at(global_position + direction)
+		_control_via_keyboard_and_gamepad_event()
 
 	# Move the character.
 	move_and_slide()
@@ -84,3 +80,16 @@ func _control_via_mouse_event(event):
 		aim.position = closest_point_on_nav_map
 		aim.debug_text = "world"
 		get_viewport().add_child(aim)
+
+
+func _control_via_keyboard_and_gamepad_event():
+	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	velocity = direction * speed
+	# Rotate the character.
+	if direction.length() > 0:
+		look_at(global_position + direction)
+
+	if Input.is_action_just_pressed("shoot"):
+		var bullet = bullet_scene.instantiate()
+		owner.add_child(bullet)
+		bullet.transform = $BulletSpawnPoint.global_transform
