@@ -73,3 +73,11 @@ The structure is as follows:
 
 - Reuse hexagonal tileset, map, navigation and player scene. Player controllable by mouse : 2024-05-15
 - Add enemy scene. Enemy moves towards the center of the map : 2024-05-15
+- Add keyboard and gamepad controls for player : 2024-05-15
+- Spaceship may shoot : 2024-05-15
+- Spaceship creates turrets : 2024-05-16
+
+## Assets
+
+- https://kenney.nl/assets/space-shooter-extension
+- https://www.kenney.nl/assets/top-down-tanks-redux

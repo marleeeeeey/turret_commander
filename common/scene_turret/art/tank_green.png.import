@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d13pf3imygnxn"
-path="res://.godot/imported/aim.png-7f6d1a73bd4684abcb19039527b8a22e.ctex"
+uid="uid://cafu8lkb2lrnm"
+path="res://.godot/imported/tank_green.png-f1fed826e724be888ee67b0e2ba3832b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://common/scene_debug_aim/aim.png"
-dest_files=["res://.godot/imported/aim.png-7f6d1a73bd4684abcb19039527b8a22e.ctex"]
+source_file="res://common/scene_turret/art/tank_green.png"
+dest_files=["res://.godot/imported/tank_green.png-f1fed826e724be888ee67b0e2ba3832b.ctex"]
 
 [params]
 

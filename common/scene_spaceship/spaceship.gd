@@ -5,6 +5,10 @@ extends CharacterBody2D
 @export var control_via_mouse_enabled = false
 @export var control_via_keys_enabled = true
 @export var bullet_scene: PackedScene
+@export var turret_scene: PackedScene
+
+var last_global_direction = Vector2.AXIS_X
+var distance_to_spawn_turret_behind_player = 60
 
 
 func _input(event):
@@ -87,9 +91,19 @@ func _control_via_keyboard_and_gamepad_event():
 	velocity = direction * speed
 	# Rotate the character.
 	if direction.length() > 0:
+		last_global_direction = direction
 		look_at(global_position + direction)
 
 	if Input.is_action_just_pressed("shoot"):
 		var bullet = bullet_scene.instantiate()
 		owner.add_child(bullet)
 		bullet.transform = $BulletSpawnPoint.global_transform
+
+	if Input.is_action_just_pressed("spawn_turret"):
+		var turret = turret_scene.instantiate()
+		owner.add_child(turret)
+		var position_behind = (
+			global_position - last_global_direction * distance_to_spawn_turret_behind_player
+		)
+		turret.global_position = position_behind
+		turret.look_at(global_position + last_global_direction)

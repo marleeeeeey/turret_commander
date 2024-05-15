@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6q8vvworcqe2"]
 
-[ext_resource type="Texture2D" uid="uid://d13pf3imygnxn" path="res://common/scene_debug_aim/aim.png" id="1_c3kbg"]
+[ext_resource type="Texture2D" uid="uid://d13pf3imygnxn" path="res://common/scene_debug_aim/art/aim.png" id="1_itt23"]
 [ext_resource type="Script" path="res://common/scene_debug_aim/debug_aim.gd" id="2_se67n"]
 
 [node name="DebugCircle" type="Sprite2D"]
-texture = ExtResource("1_c3kbg")
+texture = ExtResource("1_itt23")
 script = ExtResource("2_se67n")
 
 [node name="PosLabel" type="Label" parent="."]

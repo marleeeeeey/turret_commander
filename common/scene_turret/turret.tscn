@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp0ft4iqo4ssj"]
+
+[ext_resource type="Texture2D" uid="uid://diwndq4lclatu" path="res://common/scene_turret/art/tank_blue.png" id="1_axqbx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8edsw"]
+
+[node name="Turret" type="StaticBody2D"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_axqbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.16, 1.36)
+shape = SubResource("CapsuleShape2D_8edsw")
