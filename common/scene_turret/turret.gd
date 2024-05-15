@@ -3,6 +3,7 @@ extends StaticBody2D
 @export var bullet_scene: PackedScene
 @export var shooting_interval = 1.0
 @export var range = 500
+@export var deviation_rad = PI / 12
 
 var target = null
 
@@ -43,3 +44,4 @@ func _shoot():
 	var bullet = bullet_scene.instantiate()
 	owner.add_child(bullet)
 	bullet.transform = $BulletSpawnPoint.global_transform
+	bullet.rotate(randf_range(-deviation_rad, deviation_rad))
