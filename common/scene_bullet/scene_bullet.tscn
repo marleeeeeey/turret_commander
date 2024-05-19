@@ -6,6 +6,8 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sgxk0"]
 
 [node name="SceneBullet" type="Area2D"]
+collision_layer = 8
+collision_mask = 53
 script = ExtResource("1_clcwh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

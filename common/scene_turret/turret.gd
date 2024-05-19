@@ -12,7 +12,7 @@ func _ready() -> void:
 	$ShootingTimer.wait_time = shooting_interval
 	$ShootingTimer.start()
 
-	var scan_circle: CircleShape2D = $ScanArea/CollisionShape2D.shape
+	var scan_circle: CircleShape2D = $EnemyScanArea/CollisionShape2D.shape
 	scan_circle.radius = range
 
 
@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 func _get_closest_target() -> Node2D:
 	var closest_target = null
 	var closest_dist = range
-	for body in $ScanArea.get_overlapping_bodies():
+	for body in $EnemyScanArea.get_overlapping_bodies():
 		if body.is_in_group("enemies"):
 			var dist = global_position.distance_to(body.global_position)
 			if dist < closest_dist:

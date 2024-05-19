@@ -11,6 +11,8 @@
 radius = 25.0
 
 [node name="Spaceship" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 57
 script = ExtResource("1_s06nx")
 show_debug_info = true
 control_via_mouse_enabled = true
