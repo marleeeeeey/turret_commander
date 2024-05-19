@@ -1,8 +1,8 @@
-extends StaticBody2D
+class_name Turret extends StaticBody2D
 
 @export var bullet_scene: PackedScene
-@export var shooting_interval = 1.0
-@export var range = 500
+@export var shooting_interval = 0.4
+@export var view_range = 500
 @export var deviation_rad = PI / 12
 
 var target = null
@@ -13,7 +13,7 @@ func _ready() -> void:
 	$ShootingTimer.start()
 
 	var scan_circle: CircleShape2D = $EnemyScanArea/CollisionShape2D.shape
-	scan_circle.radius = range
+	scan_circle.radius = view_range
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 
 func _get_closest_target() -> Node2D:
 	var closest_target = null
-	var closest_dist = range
+	var closest_dist = view_range
 	for body in $EnemyScanArea.get_overlapping_bodies():
 		if body.is_in_group("enemies"):
 			var dist = global_position.distance_to(body.global_position)
