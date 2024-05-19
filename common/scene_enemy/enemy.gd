@@ -1,9 +1,10 @@
 class_name Enemy extends CharacterBody2D
 
 @export var speed = 300.0
+@export var bullet_scene: PackedScene
 
-@onready var nav_agent : NavigationAgent2D = $NavigationAgent2D
-@onready var timer_nav_to_fort : Timer = $TimerNavToFort
+@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var timer_nav_to_fort: Timer = $TimerNavToFort
 
 
 func _ready() -> void:
@@ -38,3 +39,8 @@ func _on_turrets_scan_area_body_entered(body: Node2D) -> void:
 
 func _on_timer_nav_to_fort_timeout() -> void:
 	nav_agent.target_position = Vector2.ZERO
+
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	body.queue_free()
+	queue_free()
