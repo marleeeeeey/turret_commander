@@ -5,6 +5,9 @@ class_name Turret extends StaticBody2D
 var shooting_interval = 0.4
 var deviation_rad = PI / 12
 var target = null
+var ammo_count = 10
+
+@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
@@ -32,8 +35,15 @@ func _get_closest_target() -> Node2D:
 
 
 func _on_shooting_timer_timeout() -> void:
-	if target:
+	if target and ammo_count > 0:
 		_shoot()
+
+		# Update ammo count and animation
+		ammo_count = ammo_count - 1
+		if ammo_count == 5:
+			animation.play("low_ammo")
+		elif ammo_count == 0:
+			animation.play("no_ammo")
 
 
 func _shoot():

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cp0ft4iqo4ssj"]
 
-[ext_resource type="Texture2D" uid="uid://diwndq4lclatu" path="res://common/scene_turret/art/tank_blue.png" id="1_axqbx"]
 [ext_resource type="Script" path="res://common/scene_turret/turret.gd" id="1_o8x7h"]
 [ext_resource type="PackedScene" uid="uid://drwjhnmenrsgk" path="res://common/scene_bullet/scene_bullet.tscn" id="2_7isud"]
+[ext_resource type="SpriteFrames" uid="uid://cxl8ogm3m600b" path="res://common/scene_turret/turret_sprite_frames.tres" id="4_yvdvy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8edsw"]
 
@@ -15,9 +15,10 @@ collision_mask = 16
 script = ExtResource("1_o8x7h")
 bullet_scene = ExtResource("2_7isud")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = -1.5708
-texture = ExtResource("1_axqbx")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.57079
+sprite_frames = ExtResource("4_yvdvy")
+animation = &"enought_ammo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2.16, 1.36)
