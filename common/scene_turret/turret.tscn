@@ -21,6 +21,7 @@ texture = ExtResource("1_axqbx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2.16, 1.36)
 shape = SubResource("CapsuleShape2D_8edsw")
+disabled = true
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(25, 0)

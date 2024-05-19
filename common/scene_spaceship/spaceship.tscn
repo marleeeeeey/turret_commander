@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2g2bwx2n8kj"]
+[gd_scene load_steps=8 format=3 uid="uid://d2g2bwx2n8kj"]
 
 [ext_resource type="Script" path="res://common/scene_spaceship/spaceship.gd" id="1_s06nx"]
 [ext_resource type="Texture2D" uid="uid://56vticldrkgp" path="res://common/scene_spaceship/art/ship.png" id="1_xefed"]
 [ext_resource type="PackedScene" uid="uid://drwjhnmenrsgk" path="res://common/scene_bullet/scene_bullet.tscn" id="2_3logv"]
 [ext_resource type="Script" path="res://common/scene_spaceship/camera_2d.gd" id="3_li0e6"]
 [ext_resource type="PackedScene" uid="uid://cp0ft4iqo4ssj" path="res://common/scene_turret/turret.tscn" id="3_xnaiw"]
+[ext_resource type="PackedScene" uid="uid://c6q8vvworcqe2" path="res://common/scene_debug_aim/debug_aim.tscn" id="4_6beev"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bu2ke"]
 radius = 25.0
@@ -12,8 +13,10 @@ radius = 25.0
 [node name="Spaceship" type="CharacterBody2D"]
 script = ExtResource("1_s06nx")
 show_debug_info = true
+control_via_mouse_enabled = true
 bullet_scene = ExtResource("2_3logv")
 turret_scene = ExtResource("3_xnaiw")
+debug_aim_scene = ExtResource("4_6beev")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

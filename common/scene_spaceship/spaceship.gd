@@ -6,9 +6,10 @@ extends CharacterBody2D
 @export var control_via_keys_enabled = true
 @export var bullet_scene: PackedScene
 @export var turret_scene: PackedScene
+@export var distance_to_spawn_turret_behind_player = 60
+@export var debug_aim_scene: PackedScene
 
 var last_global_direction = Vector2.AXIS_X
-var distance_to_spawn_turret_behind_player = 60
 
 
 func _input(event):
@@ -79,8 +80,7 @@ func _control_via_mouse_event(event):
 	# Debug draw the point.
 	if show_debug_info:
 		# Debug draw the point.
-		var aim_scene := preload("res://common/scene_debug_aim/debug_aim.tscn")
-		var aim = aim_scene.instantiate()
+		var aim = debug_aim_scene.instantiate()
 		aim.position = closest_point_on_nav_map
 		aim.debug_text = "world"
 		get_viewport().add_child(aim)
