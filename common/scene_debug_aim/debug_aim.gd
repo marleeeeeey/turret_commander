@@ -1,7 +1,7 @@
 extends Sprite2D
 
-@export var debug_text = ""
-@export var show_text = false
+var debug_text = ""
+var show_text = false
 
 
 func _ready() -> void:

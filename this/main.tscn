@@ -46,8 +46,7 @@ layer_0/tile_data = PackedInt32Array(-983061, 327680, 1, -917525, 327680, 1, -85
 
 [node name="Spaceship" parent="NavigationRegion2D" instance=ExtResource("2_tmf0q")]
 position = Vector2(192, 0)
-speed = 800
-distance_to_spawn_turret_behind_player = 0
+debug_aim_scene = null
 
 [node name="FortArea" type="Area2D" parent="."]
 

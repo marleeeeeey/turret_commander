@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
-@export var speed = 600
-@export var show_debug_info = false
-@export var control_via_mouse_enabled = false
-@export var control_via_keys_enabled = true
 @export var bullet_scene: PackedScene
 @export var turret_scene: PackedScene
-@export var distance_to_spawn_turret_behind_player = 60
 @export var debug_aim_scene: PackedScene
 
+var speed = 600
+var show_debug_info = false
+var control_via_mouse_enabled = false
+var control_via_keys_enabled = true
+var distance_to_spawn_turret_behind_player = 60
 var last_global_direction = Vector2.AXIS_X
 
 

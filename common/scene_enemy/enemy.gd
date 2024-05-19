@@ -1,7 +1,8 @@
 class_name Enemy extends CharacterBody2D
 
-@export var speed = 300.0
 @export var bullet_scene: PackedScene
+
+var speed = 700
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var timer_nav_to_fort: Timer = $TimerNavToFort
