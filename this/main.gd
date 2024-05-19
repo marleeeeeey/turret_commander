@@ -13,3 +13,9 @@ func _on_enemy_spawn_timer_timeout() -> void:
 	enemy.position = mob_spawn_location.position
 
 	$NavigationRegion2D.add_child(enemy)
+
+
+func _on_fort_area_body_entered(body: Node2D) -> void:
+	var enemy = body as Enemy
+	if enemy:
+		print("game over")
