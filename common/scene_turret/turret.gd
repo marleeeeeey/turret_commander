@@ -22,6 +22,11 @@ func _process(delta: float) -> void:
 		look_at(target.global_position)
 
 
+func fill_ammo():
+	ammo_count = 10
+	animation.play("full_ammo")
+
+
 func _get_closest_target() -> Node2D:
 	var closest_target = null
 	var closest_dist = INF

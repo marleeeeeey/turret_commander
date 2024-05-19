@@ -11,7 +11,7 @@ animations = [{
 "texture": ExtResource("1_qtw3h")
 }],
 "loop": true,
-"name": &"enought_ammo",
+"name": &"full_ammo",
 "speed": 5.0
 }, {
 "frames": [{

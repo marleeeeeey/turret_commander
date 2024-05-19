@@ -18,7 +18,7 @@ bullet_scene = ExtResource("2_7isud")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.57079
 sprite_frames = ExtResource("4_yvdvy")
-animation = &"enought_ammo"
+animation = &"full_ammo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2.16, 1.36)

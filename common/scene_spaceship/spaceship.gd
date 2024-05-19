@@ -112,3 +112,7 @@ func _shoot():
 	var bullet = bullet_scene.instantiate()
 	owner.add_child(bullet)
 	bullet.transform = $BulletSpawnPoint.global_transform
+
+
+func _on_ammo_supply_zone_body_entered(turret: Turret) -> void:
+	turret.fill_ammo()
