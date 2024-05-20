@@ -3,6 +3,23 @@ extends Node2D
 @export var enemy_scene: PackedScene
 
 
+func _ready() -> void:
+	start_game()
+
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		pause_game()
+
+
+func start_game() -> void:
+	$EnemySpawnTimer.start()
+
+
+func pause_game() -> void:
+	get_tree().paused = true
+
+
 func _on_enemy_spawn_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.
 	var enemy = enemy_scene.instantiate()

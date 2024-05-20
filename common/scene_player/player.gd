@@ -12,7 +12,7 @@ var distance_to_spawn_turret_behind_player = 60
 var last_global_direction = Vector2.AXIS_X
 
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if control_via_mouse_enabled:
 		_control_via_mouse_event(event)
 

@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhom3abs5q61i"]
+
+[ext_resource type="Script" path="res://common/scene_pause_panel/pause_panel.gd" id="1_u6pv5"]
+[ext_resource type="Material" uid="uid://bq5histkuvjkf" path="res://common/shader_blur/blur_shader_material.tres" id="2_fr114"]
+[ext_resource type="FontFile" uid="uid://bg1o2hwhfxg3m" path="res://common/scene_pause_panel/fonts/Xolonium-Regular.ttf" id="2_udcgj"]
+
+[node name="PausePanel" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_u6pv5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("2_fr114")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterScreenLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -373.0
+offset_top = -120.0
+offset_right = 373.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_udcgj")
+theme_override_font_sizes/font_size = 256
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
