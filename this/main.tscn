@@ -57,6 +57,8 @@ position = Vector2(2, -38)
 shape = SubResource("CircleShape2D_t04jq")
 
 [node name="PausePanel" parent="." instance=ExtResource("3_u0dqo")]
+process_mode = 0
+visible = false
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="body_entered" from="FortArea" to="." method="_on_fort_area_body_entered"]

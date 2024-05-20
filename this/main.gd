@@ -18,6 +18,7 @@ func start_game() -> void:
 
 func pause_game() -> void:
 	get_tree().paused = true
+	$PausePanel.process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 func _on_enemy_spawn_timer_timeout() -> void:

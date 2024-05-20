@@ -27,3 +27,4 @@ func continue_game() -> void:
 	get_tree().paused = false
 	hide()
 	just_paused = true
+	process_mode = Node.PROCESS_MODE_DISABLED
