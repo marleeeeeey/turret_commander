@@ -8,7 +8,8 @@ var just_paused = true
 
 
 func _ready() -> void:
-	continue_game()
+	hide()
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _process(delta: float) -> void:
@@ -16,6 +17,7 @@ func _process(delta: float) -> void:
 
 	# HACK: Skip the first frame after pausing because the pause action is still active
 	if just_paused:
+		$AnimationPlayer.play("start_pause")
 		just_paused = false
 		return
 
