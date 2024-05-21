@@ -17,10 +17,12 @@ func _process(delta: float) -> void:
 	# HACK: Skip the first frame after pausing because the pause action is still active
 	if just_paused:
 		$AnimationPlayer.play("start_pause")
+		$PauseSfx.play()
 		just_paused = false
 		return
 
 	if Input.is_action_just_pressed("pause"):
+		$PauseSfx.play()
 		_end_pause()
 
 
