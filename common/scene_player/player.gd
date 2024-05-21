@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal health_changed(health: int)
+
 @export var bullet_scene: PackedScene
 @export var turret_scene: PackedScene
 @export var debug_aim_scene: PackedScene
@@ -10,6 +12,7 @@ var control_via_mouse_enabled = false
 var control_via_keys_enabled = true
 var distance_to_spawn_turret_behind_player = 60
 var last_global_direction = Vector2.AXIS_X
+var health = 100
 
 
 func _input(event: InputEvent) -> void:
@@ -42,6 +45,11 @@ func _physics_process(delta: float) -> void:
 
 	# Move the character.
 	move_and_slide()
+
+
+func damage(damage: int) -> void:
+	health -= damage
+	health_changed.emit(health)
 
 
 func _control_via_mouse_event(event):

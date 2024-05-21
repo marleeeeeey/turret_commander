@@ -43,5 +43,5 @@ func _on_timer_nav_to_fort_timeout() -> void:
 
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	body.queue_free()
+	body.damage(10)
 	queue_free()

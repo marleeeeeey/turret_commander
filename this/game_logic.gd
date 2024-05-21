@@ -1,4 +1,6 @@
-extends Node2D
+class_name GameLogic extends Node2D
+
+signal on_game_over
 
 @export var enemy_scene: PackedScene
 
@@ -19,7 +21,17 @@ func _on_enemy_spawn_timer_timeout() -> void:
 	$NavigationRegion2D.add_child(enemy)
 
 
-func _on_fort_area_body_entered(body: Node2D) -> void:
-	var enemy = body as Enemy
-	if enemy:
-		print("game over")
+func _game_over():
+	on_game_over.emit()
+
+
+func _on_fort_area_health_changed(health: int) -> void:
+	print("Fort area health changed to: ", health)
+	if health <= 0:
+		_game_over()
+
+
+func _on_player_health_changed(health: int) -> void:
+	print("Player health changed to: ", health)
+	if health <= 0:
+		_game_over()

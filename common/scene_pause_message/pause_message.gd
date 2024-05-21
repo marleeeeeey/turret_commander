@@ -13,8 +13,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	show()
-
 	# HACK: Skip the first frame after pausing because the pause action is still active
 	if just_paused:
 		$AnimationPlayer.play("start_pause")
@@ -22,10 +20,17 @@ func _process(delta: float) -> void:
 		return
 
 	if Input.is_action_just_pressed("pause"):
-		continue_game()
+		_stop_pause()
 
 
-func continue_game() -> void:
+func show_text(text) -> void:
+	$Label.text = text
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	show()
+	get_tree().paused = true
+
+
+func _stop_pause() -> void:
 	get_tree().paused = false
 	hide()
 	just_paused = true

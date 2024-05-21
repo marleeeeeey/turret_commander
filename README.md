@@ -82,3 +82,4 @@ The structure is as follows:
 
 - https://kenney.nl/assets/space-shooter-extension
 - https://www.kenney.nl/assets/top-down-tanks-redux
+- https://kenney.nl/assets/isometric-buildings-1

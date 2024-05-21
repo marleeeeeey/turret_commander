@@ -27,6 +27,10 @@ func fill_ammo():
 	animation.play("full_ammo")
 
 
+func damage(dmg: int):
+	queue_free()
+
+
 func _get_closest_target() -> Node2D:
 	var closest_target = null
 	var closest_dist = INF
