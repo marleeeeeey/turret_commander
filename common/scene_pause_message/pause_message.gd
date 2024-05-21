@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		return
 
 	if Input.is_action_just_pressed("pause"):
-		_stop_pause()
+		_end_pause()
 
 
 func show_text(text) -> void:
@@ -30,8 +30,14 @@ func show_text(text) -> void:
 	get_tree().paused = true
 
 
-func _stop_pause() -> void:
-	get_tree().paused = false
-	hide()
-	just_paused = true
-	process_mode = Node.PROCESS_MODE_DISABLED
+func _end_pause() -> void:
+	$AnimationPlayer.play("end_pause")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "end_pause":
+		print("end pause")
+		process_mode = Node.PROCESS_MODE_DISABLED
+		get_tree().paused = false
+		hide()
+		just_paused = true
