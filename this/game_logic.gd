@@ -7,6 +7,8 @@ signal on_game_over
 
 func _ready() -> void:
 	$EnemySpawnTimer.start()
+	_set_fort_health(100)
+	_set_player_health(100)
 
 
 func _on_enemy_spawn_timer_timeout() -> void:
@@ -27,11 +29,21 @@ func _game_over():
 
 func _on_fort_area_health_changed(health: int) -> void:
 	print("Fort area health changed to: ", health)
+	_set_fort_health(health)
 	if health <= 0:
 		_game_over()
 
 
 func _on_player_health_changed(health: int) -> void:
 	print("Player health changed to: ", health)
+	_set_player_health(health)
 	if health <= 0:
 		_game_over()
+
+
+func _set_fort_health(health: int) -> void:
+	$Hud.set_top_left_label("Fort Health: " + str(health))
+
+
+func _set_player_health(health: int) -> void:
+	$Hud.set_top_right_label("Player Health: " + str(health))

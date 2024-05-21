@@ -10,6 +10,7 @@ var just_paused = true
 func _ready() -> void:
 	hide()
 	process_mode = Node.PROCESS_MODE_DISABLED
+	layer = 2  # on top of everything (0 is the lowest layer, 1 is the default layer for HUDs)
 
 
 func _process(delta: float) -> void:
@@ -24,7 +25,8 @@ func _process(delta: float) -> void:
 
 
 func show_text(text) -> void:
-	$Label.text = text
+	$CenterLabel.text = text
+	$CenterLabel.show()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	show()
 	get_tree().paused = true
@@ -32,6 +34,7 @@ func show_text(text) -> void:
 
 func _end_pause() -> void:
 	$AnimationPlayer.play("end_pause")
+	$CenterLabel.hide()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

@@ -1,10 +1,12 @@
-# Game MVP 001
+# Game MVP 001 - Turret Commander
 
 The first MVP in series of games that will be developed in the Godot engine in short timeframes.
 
 - 7 Days of development
 - Development start date: 2024-05-15
 - MVP planned release date: 2024-05-23
+- Name: Turret Commander
+- Learning goal: try to construct standalone components that can be reused in future projects.
 
 ## Gameplay overview
 

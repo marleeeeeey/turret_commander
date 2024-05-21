@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b67oscc0ioutd"]
+[gd_scene load_steps=9 format=3 uid="uid://b67oscc0ioutd"]
 
 [ext_resource type="TileSet" uid="uid://bfkbmxyjcolwx" path="res://common/tileset_hex_001_120x140/hex_tileset.tres" id="1_dmaow"]
 [ext_resource type="Script" path="res://this/game_logic.gd" id="1_igv47"]
 [ext_resource type="PackedScene" uid="uid://d2g2bwx2n8kj" path="res://common/scene_player/player.tscn" id="2_3eod7"]
 [ext_resource type="PackedScene" uid="uid://b7c30j4ac0y6r" path="res://common/scene_enemy/enemy.tscn" id="2_a1sv6"]
 [ext_resource type="PackedScene" uid="uid://coewrbeqswdp1" path="res://common/scene_fort/fort.tscn" id="5_1d4jx"]
+[ext_resource type="PackedScene" uid="uid://k0iqhecd5qlb" path="res://common/scene_hud/hud.tscn" id="6_m0ryv"]
 
 [sub_resource type="Curve2D" id="Curve2D_xcn7q"]
 _data = {
@@ -44,6 +45,8 @@ position = Vector2(192, 0)
 debug_aim_scene = null
 
 [node name="Fort" parent="." instance=ExtResource("5_1d4jx")]
+
+[node name="Hud" parent="." instance=ExtResource("6_m0ryv")]
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="health_changed" from="NavigationRegion2D/Player" to="." method="_on_player_health_changed"]
