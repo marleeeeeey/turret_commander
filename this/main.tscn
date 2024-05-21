@@ -7,8 +7,6 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_fuwcy")
 game_logic_scene = ExtResource("3_6l5jf")
+pause_menu_scene = ExtResource("3_u0dqo")
 metadata/_edit_vertical_guides_ = [-2496.0, 2496.0, -9216.0]
 metadata/_edit_horizontal_guides_ = [-1512.0, 1512.0]
-
-[node name="PauseMenu" parent="." instance=ExtResource("3_u0dqo")]
-process_mode = 0
