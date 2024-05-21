@@ -31,6 +31,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func die() -> void:
+	hide()
+	speed = 0
+	$ExplosionSfx.play()
+
+
 func _on_turrets_scan_area_body_entered(body: Node2D) -> void:
 	var turret = body as Turret
 	if turret:
@@ -44,4 +50,8 @@ func _on_timer_nav_to_fort_timeout() -> void:
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	body.damage(10)
+	die()
+
+
+func _on_explosion_sfx_finished() -> void:
 	queue_free()

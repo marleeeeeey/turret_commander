@@ -28,7 +28,10 @@ func fill_ammo():
 
 
 func damage(dmg: int):
-	queue_free()
+	die()
+	
+func die() -> void:
+	$ExplosionSfx.play()
 
 
 func _get_closest_target() -> Node2D:
@@ -61,3 +64,7 @@ func _shoot():
 	owner.add_child(bullet)
 	bullet.transform = $BulletSpawnPoint.global_transform
 	bullet.rotate(randf_range(-deviation_rad, deviation_rad))
+
+
+func _on_explosion_sfx_finished() -> void:
+	queue_free()

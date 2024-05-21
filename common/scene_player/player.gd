@@ -13,7 +13,7 @@ var control_via_keys_enabled = true
 var distance_to_spawn_turret_behind_player = 60
 var last_global_direction = Vector2.AXIS_X
 var health = 100
-var attack_deviation_rad = PI / 8
+var attack_deviation_rad = PI / 16
 
 
 func _input(event: InputEvent) -> void:
