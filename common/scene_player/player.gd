@@ -13,6 +13,7 @@ var control_via_keys_enabled = true
 var distance_to_spawn_turret_behind_player = 60
 var last_global_direction = Vector2.AXIS_X
 var health = 100
+var attack_deviation_rad = PI / 8
 
 
 func _input(event: InputEvent) -> void:
@@ -102,7 +103,7 @@ func _control_via_keyboard_and_gamepad_event():
 		last_global_direction = direction
 		look_at(global_position + direction)
 
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		_shoot()
 
 	if Input.is_action_just_pressed("spawn_turret"):
@@ -117,9 +118,15 @@ func _control_via_keyboard_and_gamepad_event():
 
 
 func _shoot():
+	if not $CooldownTimer.is_stopped():
+		return
+	
+	$CooldownTimer.start()
+	$LazerShootSfx.play()
 	var bullet = bullet_scene.instantiate()
 	owner.add_child(bullet)
 	bullet.transform = $BulletSpawnPoint.global_transform
+	bullet.rotate(randf_range(-attack_deviation_rad, attack_deviation_rad))
 
 
 func _on_ammo_supply_zone_body_entered(turret: Turret) -> void:

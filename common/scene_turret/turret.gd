@@ -56,6 +56,7 @@ func _on_shooting_timer_timeout() -> void:
 
 
 func _shoot():
+	$LazerShootSfx.play()
 	var bullet = bullet_scene.instantiate()
 	owner.add_child(bullet)
 	bullet.transform = $BulletSpawnPoint.global_transform

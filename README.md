@@ -47,24 +47,29 @@ The structure is as follows:
 ```
 - GodotProjectFoler
   - common (reusable scenes, tilesets)
-    - tileset_[sqr|iso|hex]_<name> (reusable tileset)
-      - *.tres
-      - *.png
-    - scene_<name> (reusable scene)
-      - *.tres
-      - *.gd
-      - *.tscn
-      - art/
-        - *.png
+	- tileset_[sqr|iso|hex]_<name> (reusable tileset)
+	  - *.tres
+	  - *.png
+	- scene_<name> (reusable scene)
+	  - *.tres
+	  - *.gd
+	  - *.tscn
+	  - art/
+		- *.png
+	- sfx_<name> (reusable sound effect)
+	  - art/
+		- *.mp3
+		- *.wav
+	  - <name>_sfx.scn
   - this (game specific scenes, scripts and art)
-    - main.tscn
-    - main.gd
-    - <name>.tscn
-    - <name>.gd
-    - art
-      - *.png
-      - *.mp3
-      - *.wav
+	- main.tscn
+	- main.gd
+	- <name>.tscn
+	- <name>.gd
+	- art
+	  - *.png
+	  - *.mp3
+	  - *.wav
 ```
 
 **sqr** - square tileset.

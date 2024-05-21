@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp0ft4iqo4ssj"]
+[gd_scene load_steps=7 format=3 uid="uid://cp0ft4iqo4ssj"]
 
 [ext_resource type="Script" path="res://common/scene_turret/turret.gd" id="1_o8x7h"]
 [ext_resource type="PackedScene" uid="uid://drwjhnmenrsgk" path="res://common/scene_bullet/scene_bullet.tscn" id="2_7isud"]
+[ext_resource type="PackedScene" uid="uid://djvpddq55g4c" path="res://common/sfx_lazer_shoot/lazer_shoot_sfx.scn" id="4_646pt"]
 [ext_resource type="SpriteFrames" uid="uid://cxl8ogm3m600b" path="res://common/scene_turret/turret_sprite_frames.tres" id="4_yvdvy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8edsw"]
@@ -35,5 +36,7 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyScanArea"]
 shape = SubResource("CircleShape2D_bevfx")
+
+[node name="LazerShootSfx" parent="." instance=ExtResource("4_646pt")]
 
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2g2bwx2n8kj"]
+[gd_scene load_steps=10 format=3 uid="uid://d2g2bwx2n8kj"]
 
 [ext_resource type="Script" path="res://common/scene_player/player.gd" id="1_s06nx"]
 [ext_resource type="Texture2D" uid="uid://56vticldrkgp" path="res://common/scene_player/art/ship.png" id="1_xefed"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://common/scene_player/camera_2d.gd" id="3_li0e6"]
 [ext_resource type="PackedScene" uid="uid://cp0ft4iqo4ssj" path="res://common/scene_turret/turret.tscn" id="3_xnaiw"]
 [ext_resource type="PackedScene" uid="uid://c6q8vvworcqe2" path="res://common/scene_debug_aim/debug_aim.tscn" id="4_6beev"]
+[ext_resource type="PackedScene" uid="uid://djvpddq55g4c" path="res://common/sfx_lazer_shoot/lazer_shoot_sfx.scn" id="7_t052v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bu2ke"]
 radius = 25.0
@@ -42,5 +43,11 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AmmoSupplyZone"]
 shape = SubResource("CircleShape2D_r63pl")
+
+[node name="LazerShootSfx" parent="." instance=ExtResource("7_t052v")]
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
 [connection signal="body_entered" from="AmmoSupplyZone" to="." method="_on_ammo_supply_zone_body_entered"]
