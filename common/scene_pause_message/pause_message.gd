@@ -28,9 +28,9 @@ func _process(delta: float) -> void:
 
 func show_text(centered_text, top_text = "", bottom_text = "") -> void:
 	_clear_labels()
-	$TopLabel.text = top_text
-	$CenterLabel.text = centered_text
-	$BottomLabel.text = bottom_text
+	$TopLabel.text = "{0}".format([top_text])
+	$CenterLabel.text = "{0}".format([centered_text])
+	$BottomLabel.text = "{0}".format([bottom_text])
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	show()
 	get_tree().paused = true
