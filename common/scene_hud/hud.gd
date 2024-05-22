@@ -1,15 +1,27 @@
 extends CanvasLayer
 
+var player_health = 0
+var fort_health = 0
+var player_scores = 0
+
 
 func _ready() -> void:
-	# clear the labels
-	set_top_left_label("")
-	set_top_right_label("")
+	$TopCenterLabel.text = ""
 
 
-func set_top_left_label(text: String) -> void:
-	$TopLeftLabel.text = text
+func _process(delta: float) -> void:
+	$TopCenterLabel.text = "Player HP: {0}    Fort HP: {1}    Scores: {2}".format(
+		[player_health, fort_health, player_scores]
+	)
 
 
-func set_top_right_label(text: String) -> void:
-	$TopRightLabel.text = text
+func set_player_health(health: int) -> void:
+	player_health = health
+
+
+func set_fort_health(health: int) -> void:
+	fort_health = health
+
+
+func set_player_scores(scores: int) -> void:
+	player_scores = scores

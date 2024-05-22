@@ -5,14 +5,14 @@ extends Node2D
 
 # Create game_logic when game begin. Destroy at the end.
 var game_logic: GameLogic = null
-var pause_menu = null
+var pause_message = null
 var should_create_game_logic = true
 
 
 func _ready() -> void:
 	# Init PauseMenu
-	pause_menu = pause_message_scene.instantiate()
-	add_child(pause_menu)
+	pause_message = pause_message_scene.instantiate()
+	add_child(pause_message)
 
 
 func _process(delta: float) -> void:
@@ -21,13 +21,16 @@ func _process(delta: float) -> void:
 			game_logic.queue_free()
 		_create_game_logic()
 		should_create_game_logic = false
+		pause_message.show_text("TURRET COMMANDER", "", "press space key to start")
 
 	if Input.is_action_just_pressed("pause"):
-		pause_menu.show_text("PAUSE")
+		pause_message.show_text("PAUSE")
 
 
 func _on_game_over() -> void:
-	pause_menu.show_text("GAME OVER")
+	pause_message.show_text(
+		"GAME OVER", "TURRET COMMANDER", "Your score: %d" % game_logic.get_scores()
+	)
 	should_create_game_logic = true
 
 

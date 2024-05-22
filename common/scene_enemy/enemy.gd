@@ -1,5 +1,7 @@
 class_name Enemy extends CharacterBody2D
 
+signal on_die()
+
 @export var bullet_scene: PackedScene
 
 var speed = 700
@@ -35,6 +37,7 @@ func die() -> void:
 	hide()
 	speed = 0
 	$ExplosionSfx.play()
+	on_die.emit()
 
 
 func _on_turrets_scan_area_body_entered(body: Node2D) -> void:

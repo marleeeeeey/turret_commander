@@ -21,14 +21,16 @@ func _process(delta: float) -> void:
 		just_paused = false
 		return
 
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") or Input.is_action_pressed("shoot"):
 		$PauseSfx.play()
 		_end_pause()
 
 
-func show_text(text) -> void:
-	$CenterLabel.text = text
-	$CenterLabel.show()
+func show_text(centered_text, top_text = "", bottom_text = "") -> void:
+	_clear_labels()
+	$TopLabel.text = top_text
+	$CenterLabel.text = centered_text
+	$BottomLabel.text = bottom_text
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	show()
 	get_tree().paused = true
@@ -36,7 +38,7 @@ func show_text(text) -> void:
 
 func _end_pause() -> void:
 	$AnimationPlayer.play("end_pause")
-	$CenterLabel.hide()
+	_clear_labels()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -46,3 +48,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		get_tree().paused = false
 		hide()
 		just_paused = true
+
+
+func _clear_labels() -> void:
+	$TopLabel.text = ""
+	$CenterLabel.text = ""
+	$BottomLabel.text = ""
