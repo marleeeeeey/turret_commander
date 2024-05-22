@@ -2,10 +2,10 @@ class_name Turret extends StaticBody2D
 
 @export var bullet_scene: PackedScene
 
-var shooting_interval = 0.4
-var deviation_rad = PI / 12
+var shooting_interval = 0.7
+var deviation_rad = PI / 4
 var target = null
-var ammo_count = 10
+var ammo_count = 5
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -29,7 +29,8 @@ func fill_ammo():
 
 func damage(dmg: int):
 	die()
-	
+
+
 func die() -> void:
 	$ExplosionSfx.play()
 
@@ -52,7 +53,7 @@ func _on_shooting_timer_timeout() -> void:
 
 		# Update ammo count and animation
 		ammo_count = ammo_count - 1
-		if ammo_count == 5:
+		if ammo_count == 3:
 			animation.play("low_ammo")
 		elif ammo_count == 0:
 			animation.play("no_ammo")
@@ -63,7 +64,7 @@ func _shoot():
 	var bullet = bullet_scene.instantiate()
 	owner.add_child(bullet)
 	bullet.transform = $BulletSpawnPoint.global_transform
-	bullet.rotate(randf_range(-deviation_rad, deviation_rad))
+	bullet.rotate(randf_range(-deviation_rad / 2, deviation_rad / 2))
 
 
 func _on_explosion_sfx_finished() -> void:

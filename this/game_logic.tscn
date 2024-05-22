@@ -42,7 +42,6 @@ layer_0/tile_data = PackedInt32Array(-983061, 327680, 1, -917525, 327680, 1, -85
 
 [node name="Player" parent="NavigationRegion2D" instance=ExtResource("2_3eod7")]
 position = Vector2(192, 0)
-debug_aim_scene = null
 
 [node name="Fort" parent="." instance=ExtResource("5_1d4jx")]
 

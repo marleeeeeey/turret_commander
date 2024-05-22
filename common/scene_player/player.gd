@@ -7,13 +7,15 @@ signal health_changed(health: int)
 @export var debug_aim_scene: PackedScene
 
 var speed = 600
-var show_debug_info = false
+var show_debug_info = true
 var control_via_mouse_enabled = false
 var control_via_keys_enabled = true
 var distance_to_spawn_turret_behind_player = 60
-var last_global_direction = Vector2.AXIS_X
+var last_global_direction = Vector2(1, 0)
 var health = 100
-var attack_deviation_rad = PI / 16
+var attack_deviation_rad = PI / 8
+var turrent_limit = 30
+var hud_scene: Hud = null
 
 
 func _input(event: InputEvent) -> void:
@@ -22,6 +24,11 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
+	if hud_scene:
+		hud_scene.set_turret_limit(turrent_limit)
+		var turret_count = get_tree().get_nodes_in_group("turrets").size()
+		hud_scene.set_turret_count(turret_count)
+
 	if control_via_keys_enabled:
 		_control_via_keyboard_and_gamepad_event()
 
@@ -46,6 +53,10 @@ func _physics_process(delta: float) -> void:
 
 	# Move the character.
 	move_and_slide()
+
+
+func set_hud_scene(scene: Hud):
+	hud_scene = scene
 
 
 func damage(damage: int) -> void:
@@ -91,7 +102,6 @@ func _control_via_mouse_event(event):
 		# Debug draw the point.
 		var aim = debug_aim_scene.instantiate()
 		aim.position = closest_point_on_nav_map
-		aim.debug_text = "world"
 		get_viewport().add_child(aim)
 
 
@@ -107,26 +117,30 @@ func _control_via_keyboard_and_gamepad_event():
 		_shoot()
 
 	if Input.is_action_just_pressed("spawn_turret"):
-		var turret = turret_scene.instantiate()
-		owner.add_child(turret)
-		turret.owner = owner
-		var position_behind = (
-			global_position - last_global_direction * distance_to_spawn_turret_behind_player
-		)
-		turret.global_position = position_behind
-		turret.look_at(global_position + last_global_direction)
+		var turrets_count = get_tree().get_nodes_in_group("turrets").size()
+		if turrets_count < turrent_limit:
+			# Need to use `owner` to detach turret from the player coordinate system.
+			var turret = turret_scene.instantiate()
+			owner.add_child(turret)
+			turret.owner = owner
+
+			var position_behind = (
+				global_position - last_global_direction * distance_to_spawn_turret_behind_player
+			)
+			turret.global_position = position_behind
+			turret.look_at(global_position + last_global_direction)
 
 
 func _shoot():
 	if not $CooldownTimer.is_stopped():
 		return
-	
+
 	$CooldownTimer.start()
 	$LazerShootSfx.play()
 	var bullet = bullet_scene.instantiate()
 	owner.add_child(bullet)
 	bullet.transform = $BulletSpawnPoint.global_transform
-	bullet.rotate(randf_range(-attack_deviation_rad, attack_deviation_rad))
+	bullet.rotate(randf_range(-attack_deviation_rad / 2, attack_deviation_rad / 2))
 
 
 func _on_ammo_supply_zone_body_entered(turret: Turret) -> void:

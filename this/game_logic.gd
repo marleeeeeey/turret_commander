@@ -9,7 +9,9 @@ var scores = 0
 
 
 func _ready() -> void:
-	$EnemySpawnTimer.start()
+	$Hud.set_enemy_spawn_period_sec(enemy_spawn_period_sec)
+	$EnemySpawnTimer.start(enemy_spawn_period_sec)
+	$NavigationRegion2D/Player.set_hud_scene($Hud)
 	_set_fort_health(100)
 	_set_player_health(100)
 
@@ -59,4 +61,11 @@ func _set_player_health(health: int) -> void:
 
 func _on_enemy_die() -> void:
 	scores += 1
+
+	if scores % 10 == 0:
+		enemy_spawn_period_sec /= 1.4
+		enemy_spawn_period_sec = clampf(enemy_spawn_period_sec, 0.2, INF)
+		$EnemySpawnTimer.start(enemy_spawn_period_sec)
+		$Hud.set_enemy_spawn_period_sec(enemy_spawn_period_sec)
+
 	$Hud.set_player_scores(scores)
