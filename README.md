@@ -16,6 +16,19 @@ The first MVP in series of games that will be developed in the Godot engine in s
 - Player can also move around the map to help turrets and attack enemies.
 - Player can damage enemies by being close to them.
 
+## Controls
+
+- Gamepad (preferred)
+  - Left stick - move the player.
+  - A - place a turret.
+  - X - shoot.
+  - Start - pause the game.
+- Keyboard:
+  - W, A, S, D - move the player.
+  - Space - place a turret.
+  - Enter - shoot.
+  - Esc - pause the game.
+
 ## Gameplay details
 
 - The player controls the hero.
