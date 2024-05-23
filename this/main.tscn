@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkxxkll0adgwk"]
+[gd_scene load_steps=5 format=3 uid="uid://bkxxkll0adgwk"]
 
 [ext_resource type="Script" path="res://this/main.gd" id="1_fuwcy"]
 [ext_resource type="PackedScene" uid="uid://b67oscc0ioutd" path="res://this/game_logic.tscn" id="3_6l5jf"]
 [ext_resource type="PackedScene" uid="uid://dhom3abs5q61i" path="res://common/scene_pause_message/pause_message.tscn" id="3_u0dqo"]
+[ext_resource type="AudioStream" uid="uid://ca50evrj3lq64" path="res://this/art/music-turret-commander.mp3" id="4_cx7bx"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_fuwcy")
@@ -10,3 +11,9 @@ game_logic_scene = ExtResource("3_6l5jf")
 pause_message_scene = ExtResource("3_u0dqo")
 metadata/_edit_vertical_guides_ = [-2496.0, 2496.0, -9216.0]
 metadata/_edit_horizontal_guides_ = [-1512.0, 1512.0]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_cx7bx")
+volume_db = -8.0
+autoplay = true

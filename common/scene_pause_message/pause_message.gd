@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		just_paused = false
 		return
 
-	if Input.is_action_just_pressed("pause") or Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("pause") or Input.is_action_just_pressed("shoot"):
 		$PauseSfx.play()
 		_end_pause()
 
