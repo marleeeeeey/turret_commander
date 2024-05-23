@@ -7,6 +7,7 @@ The first MVP in series of games that will be developed in the Godot engine in s
 - MVP planned release date: 2024-05-23 (2024-05-22 + 1 extra day)
 - Name: Turret Commander
 - Learning goal: try to construct standalone components that can be reused in future projects.
+- Release link: https://marleeeeeey.itch.io/turret-commander
 
 ## Gameplay overview
 
