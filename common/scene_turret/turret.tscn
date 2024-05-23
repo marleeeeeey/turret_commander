@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://common/scene_turret/turret.gd" id="1_o8x7h"]
 [ext_resource type="PackedScene" uid="uid://drwjhnmenrsgk" path="res://common/scene_bullet/scene_bullet.tscn" id="2_7isud"]
-[ext_resource type="PackedScene" uid="uid://b4bm7eemt6ovl" path="res://common/sfx_lazer_shoot/lazer_shoot_sfx.tscn" id="4_x45mm"]
 [ext_resource type="SpriteFrames" uid="uid://cxl8ogm3m600b" path="res://common/scene_turret/turret_sprite_frames.tres" id="4_yvdvy"]
-[ext_resource type="PackedScene" uid="uid://dcy1gpvgus6ku" path="res://common/sfx_explosion/explosion_sfx.tscn" id="5_ihx8v"]
+[ext_resource type="AudioStream" uid="uid://dlb0xvqkbg1id" path="res://common/sfx_lazer_shoot/lazer_shoot_sfx.tres" id="5_5vv40"]
+[ext_resource type="AudioStream" uid="uid://bv8ckn5pb8cvj" path="res://common/sfx_explosion/explosion_sfx.tres" id="5_nohc4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8edsw"]
 
@@ -38,9 +38,11 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyScanArea"]
 shape = SubResource("CircleShape2D_bevfx")
 
-[node name="LazerShootSfx" parent="." instance=ExtResource("4_x45mm")]
+[node name="ExplosionSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_nohc4")
 
-[node name="ExplosionSfx" parent="." instance=ExtResource("5_ihx8v")]
+[node name="LazerShootSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5vv40")
 
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]
 [connection signal="finished" from="ExplosionSfx" to="." method="_on_explosion_sfx_finished"]
