@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://cp0ft4iqo4ssj"]
+
+[ext_resource type="Script" path="res://030_deps_scenes/turret/turret.gd" id="1_jrs0q"]
+[ext_resource type="PackedScene" uid="uid://drwjhnmenrsgk" path="res://020_standalone_scenes/bullet/bullet.tscn" id="2_pxtef"]
+[ext_resource type="SpriteFrames" uid="uid://cxl8ogm3m600b" path="res://030_deps_scenes/turret/turret_sprite_frames.tres" id="3_078q8"]
+[ext_resource type="AudioStream" uid="uid://bv8ckn5pb8cvj" path="res://020_standalone_scenes/sfx_explosion/explosion_sfx.tres" id="4_v6tu1"]
+[ext_resource type="AudioStream" uid="uid://dlb0xvqkbg1id" path="res://020_standalone_scenes/sfx_lazer_shoot/lazer_shoot_sfx.tres" id="5_r2w0m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8edsw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bevfx"]
+radius = 500.0
+
+[node name="Turret" type="StaticBody2D" groups=["turrets"]]
+collision_layer = 4
+collision_mask = 16
+script = ExtResource("1_jrs0q")
+bullet_scene = ExtResource("2_pxtef")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.57079
+sprite_frames = ExtResource("3_078q8")
+animation = &"full_ammo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.16, 1.36)
+shape = SubResource("CapsuleShape2D_8edsw")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(25, 0)
+
+[node name="ShootingTimer" type="Timer" parent="."]
+
+[node name="EnemyScanArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyScanArea"]
+shape = SubResource("CircleShape2D_bevfx")
+
+[node name="ExplosionSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_v6tu1")
+
+[node name="LazerShootSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_r2w0m")
+
+[connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]
+[connection signal="finished" from="ExplosionSfx" to="." method="_on_explosion_sfx_finished"]

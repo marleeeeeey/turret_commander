@@ -58,36 +58,43 @@ The structure is as follows:
 
 ```
 - GodotProjectFoler
-  - common (reusable scenes, tilesets)
-	- tileset_[sqr|iso|hex]_<name> (reusable tileset)
-	  - *.tres
-	  - *.png
-	- scene_<name> (reusable scene)
-	  - *.tres
-	  - *.gd
-	  - *.tscn
-	  - art/
-		- *.png
-		- *.mp3
-	- sfx_<name> (reusable sound effect)
-	  - art/
-		- *.mp3
-		- *.wav
-	  - <name>_sfx.tres
-  - this (game specific scenes, scripts and art)
-	- main.tscn
-	- main.gd
-	- <name>.tscn
-	- <name>.gd
-	- art
-	  - *.png
-	  - *.mp3
-	  - *.wav
+  - 010_globals (keep link to the Camera2D, ...)
+    - globals.gd
+  - 015_scripts (reusable scripts without scenes)
+    - *.gd
+  - 017_standalone_tilesets (tilesets without dependencies)
+    - <name>
+      - *.tres
+      - *.png
+  - 020_standalone_scenes (scenes without dependencies)
+    - <name>
+      - *.tres
+      - *.gd
+      - *.tscn
+      - art/
+        - *.png
+        - *.mp3
+        - *.wav
+  - 030_deps_scenes (scenes with dependencies from standalone scenes)
+    - <name>
+      - *.tres
+      - *.gd
+      - *.tscn
+      - art/
+        - *.png
+        - *.mp3
+        - *.wav
+  - 090_this (game specific scenes, scripts and art)
+    - main.tscn
+    - main.gd
+    - <name>.tscn
+    - <name>.gd
+    - art
+      - *.png
+      - *.mp3
+      - *.wav
+      - icon.svg
 ```
-
-**sqr** - square tileset.
-**iso** - isometric tileset.
-**hex** - hexagonal tileset.
 
 ## Devlog
 
