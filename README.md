@@ -96,28 +96,43 @@ The structure is as follows:
       - icon.svg
 ```
 
-## Devlog
+## Development Log
 
-- Reused the hexagonal tileset and player scene (spaceship) - the player is controlled with the mouse: 2024-05-15
-- Added an enemy scene. By default, it moves to the center of the map: 2024-05-15
-- The player is controlled with the keyboard and gamepad: 2024-05-15
-- The player can shoot: 2024-05-15
-- The player can create turrets: 2024-05-16
-- Turrets attack enemies: 2024-05-16
-- Created the player's fort area: 2024-05-19
-- Disabled collisions for turrets: 2024-05-19
-- Enemies collide with turrets and the fort, as well as the map. The player collides only with the map and enemies: 2024-05-19
-- Enemies try to crash into nearby turrets: 2024-05-19
-- Turrets have a limited number of charges: 2024-05-20
-- The hero recharges turrets when near them: 2024-05-20
-- Implemented the pause menu: 2024-05-21
-- Reused the pause menu for the game over message: 2024-05-21
-- Added HUD with player and fort health: 2024-05-21
-- Added sound effects for shooting and explosions: 2024-05-21
-- Improved UI. Added start game, pause, and game over menus. Added health and score counters: 2024-05-22
-- Added increasing enemy spawn rate over time: 2024-05-23
-- Added lifecycle for bullets. Added limits on the number of turrets and bullets: 2024-05-23
-- First release of the MVP for itch.io: 2024-05-23
+- Reused the hexagonal tileset and player scene (spaceship) - the player is controlled with the mouse: #2024-05-15
+- Added an enemy scene. By default, it moves to the center of the map: #2024-05-15
+- The player is controlled with the keyboard and gamepad: #2024-05-15
+- The player can shoot: #2024-05-15
+- The player can create turrets: #2024-05-16
+- Turrets attack enemies: #2024-05-16
+- Created the player's fort area: #2024-05-19
+- Disabled collisions for turrets: #2024-05-19
+- Enemies collide with turrets and the fort, as well as the map. The player collides only with the map and enemies: #2024-05-19
+- Enemies try to crash into nearby turrets: #2024-05-19
+- Turrets have a limited number of charges: #2024-05-20
+- The hero recharges turrets when near them: #2024-05-20
+- Implemented the pause menu: #2024-05-21
+- Reused the pause menu for the game over message: #2024-05-21
+- Added HUD with player and fort health: #2024-05-21
+- Added sound effects for shooting and explosions: #2024-05-21
+- Improved UI. Added start game, pause, and game over menus. Added health and score counters: #2024-05-22
+- Added increasing enemy spawn rate over time: #2024-05-23
+- Added lifecycle for bullets. Added limits on the number of turrets and bullets: #2024-05-23
+- First release of the MVP for itch.io: #2024-05-23
+
+## TODO list
+
+- The player cannot place turrets too often during the game.
+- The player cannot place turrets too close to each other.
+- Change the control to smooth turns on the arrow keys instead of moving up-down-left-right.
+
+## Game design problems
+
+- The main problem to solve is to make it so that you don't have to circle around one point.
+- Come up with a more interesting level and change levels in order.
+- Make several bases and move between them to defend them.
+  - But the game is still pretty dumb because you can only place turrets and don't participate in the game yourself.
+- A version with a more thought-out level with mazes and different types of guns.
+- I would start playing if the plane had complex inertial control, and fewer enemies (Vasilyev).
 
 ## Assets
 
